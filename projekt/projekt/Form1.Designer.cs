@@ -131,7 +131,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(231, 187);
+            this.label3.Location = new System.Drawing.Point(226, 186);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(147, 17);
             this.label3.TabIndex = 30;
@@ -193,7 +193,7 @@
             this.tbUrl.Location = new System.Drawing.Point(5, 206);
             this.tbUrl.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbUrl.Name = "tbUrl";
-            this.tbUrl.Size = new System.Drawing.Size(232, 22);
+            this.tbUrl.Size = new System.Drawing.Size(218, 22);
             this.tbUrl.TabIndex = 24;
             this.tbUrl.Tag = "";
             // 
@@ -243,9 +243,9 @@
             // 
             // tbUF
             // 
-            this.tbUF.Location = new System.Drawing.Point(243, 206);
+            this.tbUF.Location = new System.Drawing.Point(229, 206);
             this.tbUF.Name = "tbUF";
-            this.tbUF.Size = new System.Drawing.Size(135, 22);
+            this.tbUF.Size = new System.Drawing.Size(149, 22);
             this.tbUF.TabIndex = 41;
             // 
             // Form1

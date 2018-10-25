@@ -18,3 +18,13 @@ C:\Users\donbh\Desktop\projekt\projekt\obj\Debug\projekt.csproj.GenerateResource
 C:\Users\donbh\Desktop\projekt\projekt\obj\Debug\projekt.csproj.CoreCompileInputs.cache
 C:\Users\donbh\Desktop\projekt\projekt\obj\Debug\projekt.exe
 C:\Users\donbh\Desktop\projekt\projekt\obj\Debug\projekt.pdb
+C:\Users\donbh\Documents\GitHub\Projektc-\projekt\projekt\bin\Debug\projekt.exe.config
+C:\Users\donbh\Documents\GitHub\Projektc-\projekt\projekt\bin\Debug\projekt.exe
+C:\Users\donbh\Documents\GitHub\Projektc-\projekt\projekt\bin\Debug\projekt.pdb
+C:\Users\donbh\Documents\GitHub\Projektc-\projekt\projekt\obj\Debug\projekt.csprojAssemblyReference.cache
+C:\Users\donbh\Documents\GitHub\Projektc-\projekt\projekt\obj\Debug\projekt.Form1.resources
+C:\Users\donbh\Documents\GitHub\Projektc-\projekt\projekt\obj\Debug\projekt.Properties.Resources.resources
+C:\Users\donbh\Documents\GitHub\Projektc-\projekt\projekt\obj\Debug\projekt.csproj.GenerateResource.cache
+C:\Users\donbh\Documents\GitHub\Projektc-\projekt\projekt\obj\Debug\projekt.csproj.CoreCompileInputs.cache
+C:\Users\donbh\Documents\GitHub\Projektc-\projekt\projekt\obj\Debug\projekt.exe
+C:\Users\donbh\Documents\GitHub\Projektc-\projekt\projekt\obj\Debug\projekt.pdb
