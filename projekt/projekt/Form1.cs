@@ -1,9 +1,6 @@
 ﻿using projekt.classes;
 using System;
-using System.Net;
-using System.Text;
 using System.Windows.Forms;
-using System.Xml;
 
 namespace projekt
 {
@@ -14,10 +11,14 @@ namespace projekt
         public static string[] Category = new string[]{"Konst","Komedi","Utbildning","Spel",
         "Hälsa","Musik","Politik","Samhälle","Sport","Teknologi","Skräck"};
 
-        private Validering Validering;
+
+    
+     
+
+
         public Form1()
         {
-
+         
             InitializeComponent();
         }
 
@@ -32,7 +33,7 @@ namespace projekt
         {
             foreach (string cato in Category)
             {
-                cbCate.Items.Add(cato);
+                //cbCate.Items.Add(cato);
                 comboBox3.Items.Add(cato);
             }
 
@@ -41,20 +42,20 @@ namespace projekt
 
         private void button1_Click(object sender, EventArgs e)
         {
-            var Url = tbUrl.Text;
+           var xx=new Data ();
+        var Url = tbUrl.Text;
             var s = tbUF.Text;
-            int frekvens = 0;
-            int.TryParse(s, out frekvens);
+           
+            int.TryParse(s, out int frekvens);
+             
+            string category = textBox2.Text;
 
-            var category = cbCate.Items.ToString();
-    
-    
-    }
 
-        private void getXmlOfUrl(string url)
-        {
+            xx.serializePodcast(Url, frekvens, category);
 
         }
+
+    
 
 
     }

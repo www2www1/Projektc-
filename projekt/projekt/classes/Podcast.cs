@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace projekt.classes
 {
@@ -16,13 +12,15 @@ namespace projekt.classes
         public int TimeInterval { get; set; }
         public string NameOfPodCast { get; set; }
         public List<Episode> ListOFEpisode = new List<Episode>();
+        public int AllaEpisode { get; set; }
 
-        public Podcast(string Url, string CategoryOfPodcast, int TimeInterval, List<Episode> ListOFEpisode)
+        public Podcast(string Url, string CategoryOfPodcast, int TimeInterval, List<Episode> ListOFEpisode, int AllaEpisode)
         {
             this.Url = Url;
             this.CategoryOfPodcast = CategoryOfPodcast;
             this.TimeInterval = TimeInterval;
             this.ListOFEpisode = ListOFEpisode;
+            this.AllaEpisode = AllaEpisode;
         }
     }
 }

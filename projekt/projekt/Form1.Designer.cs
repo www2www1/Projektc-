@@ -30,7 +30,6 @@
         {
             this.linkLabel = new System.Windows.Forms.LinkLabel();
             this.DescriptionTextBox = new System.Windows.Forms.TextBox();
-            this.cbCate = new System.Windows.Forms.ComboBox();
             this.btTaBort = new System.Windows.Forms.Button();
             this.btSpara = new System.Windows.Forms.Button();
             this.btNy = new System.Windows.Forms.Button();
@@ -50,6 +49,7 @@
             this.chKategori1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.label1 = new System.Windows.Forms.Label();
             this.tbUF = new System.Windows.Forms.TextBox();
+            this.textBox2 = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // linkLabel
@@ -71,15 +71,6 @@
             this.DescriptionTextBox.Name = "DescriptionTextBox";
             this.DescriptionTextBox.Size = new System.Drawing.Size(281, 116);
             this.DescriptionTextBox.TabIndex = 38;
-            // 
-            // cbCate
-            // 
-            this.cbCate.FormattingEnabled = true;
-            this.cbCate.Location = new System.Drawing.Point(384, 206);
-            this.cbCate.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.cbCate.Name = "cbCate";
-            this.cbCate.Size = new System.Drawing.Size(158, 24);
-            this.cbCate.TabIndex = 37;
             // 
             // btTaBort
             // 
@@ -248,16 +239,23 @@
             this.tbUF.Size = new System.Drawing.Size(149, 22);
             this.tbUF.TabIndex = 41;
             // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(385, 208);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(100, 22);
+            this.textBox2.TabIndex = 42;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(858, 450);
+            this.Controls.Add(this.textBox2);
             this.Controls.Add(this.tbUF);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.linkLabel);
             this.Controls.Add(this.DescriptionTextBox);
-            this.Controls.Add(this.cbCate);
             this.Controls.Add(this.btTaBort);
             this.Controls.Add(this.btSpara);
             this.Controls.Add(this.btNy);
@@ -283,7 +281,6 @@
 
         private System.Windows.Forms.LinkLabel linkLabel;
         private System.Windows.Forms.TextBox DescriptionTextBox;
-        private System.Windows.Forms.ComboBox cbCate;
         private System.Windows.Forms.Button btTaBort;
         private System.Windows.Forms.Button btSpara;
         private System.Windows.Forms.Button btNy;
@@ -303,6 +300,7 @@
         private System.Windows.Forms.ColumnHeader chKategori1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox tbUF;
+        private System.Windows.Forms.TextBox textBox2;
     }
 }
 

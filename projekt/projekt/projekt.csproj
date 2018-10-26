@@ -51,7 +51,7 @@
     <Compile Include="classes\AllPodcasts.cs" />
     <Compile Include="classes\Episode.cs" />
     <Compile Include="classes\Podcast.cs" />
-    <Compile Include="Data.cs" />
+    <Compile Include="classes\Data.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
