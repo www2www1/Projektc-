@@ -41,6 +41,7 @@ namespace projekt
             }
 
             var allpodcast = new List<Podcast>();
+           
             allpodcast.Add(new Podcast(Url, category, frekvens, ListOFEpisode, antal));
 
 
