@@ -47,9 +47,9 @@
             this.chKategori1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.label1 = new System.Windows.Forms.Label();
             this.CBC = new System.Windows.Forms.ComboBox();
-            this.tbUF = new System.Windows.Forms.TextBox();
             this.lbEpisode = new System.Windows.Forms.ListBox();
             this.label4 = new System.Windows.Forms.Label();
+            this.tbUF = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // linkLabel
@@ -82,6 +82,7 @@
             this.btSpara.TabIndex = 34;
             this.btSpara.Text = "Spara";
             this.btSpara.UseVisualStyleBackColor = true;
+            this.btSpara.Click += new System.EventHandler(this.btSpara_Click);
             // 
             // btNy
             // 
@@ -95,7 +96,7 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(548, 80);
+            this.textBox1.Location = new System.Drawing.Point(548, 73);
             this.textBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(283, 22);
@@ -218,18 +219,12 @@
             // 
             // CBC
             // 
+            this.CBC.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CBC.FormattingEnabled = true;
             this.CBC.Location = new System.Drawing.Point(384, 211);
             this.CBC.Name = "CBC";
             this.CBC.Size = new System.Drawing.Size(119, 24);
             this.CBC.TabIndex = 44;
-            // 
-            // tbUF
-            // 
-            this.tbUF.Location = new System.Drawing.Point(229, 211);
-            this.tbUF.Name = "tbUF";
-            this.tbUF.Size = new System.Drawing.Size(149, 22);
-            this.tbUF.TabIndex = 41;
             // 
             // lbEpisode
             // 
@@ -251,15 +246,24 @@
             this.label4.TabIndex = 47;
             this.label4.Text = "label4";
             // 
+            // tbUF
+            // 
+            this.tbUF.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.tbUF.FormattingEnabled = true;
+            this.tbUF.Location = new System.Drawing.Point(229, 211);
+            this.tbUF.Name = "tbUF";
+            this.tbUF.Size = new System.Drawing.Size(144, 24);
+            this.tbUF.TabIndex = 48;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(858, 450);
+            this.ClientSize = new System.Drawing.Size(876, 476);
+            this.Controls.Add(this.tbUF);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.lbEpisode);
             this.Controls.Add(this.CBC);
-            this.Controls.Add(this.tbUF);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.linkLabel);
             this.Controls.Add(this.btTaBort);
@@ -303,9 +307,9 @@
         private System.Windows.Forms.ColumnHeader chKategori1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox CBC;
-        private System.Windows.Forms.TextBox tbUF;
         private System.Windows.Forms.ListBox lbEpisode;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.ComboBox tbUF;
     }
 }
 

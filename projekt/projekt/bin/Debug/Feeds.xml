@@ -5,14 +5,4 @@
     <Updating>22</Updating>
     <Category>Utbildning</Category>
   </RssFeed>
-  <RssFeed>
-    <Url>http://alexosigge.libsyn.com/rss</Url>
-    <Updating>22</Updating>
-    <Category>Musik</Category>
-  </RssFeed>
-  <RssFeed>
-    <Url>https://rss.acast.com/sparpodcast</Url>
-    <Updating>22</Updating>
-    <Category>Utbildning</Category>
-  </RssFeed>
 </ArrayOfRssFeed>

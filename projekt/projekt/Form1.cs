@@ -1,5 +1,6 @@
 ﻿using projekt.classes;
 using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 using System.Xml;
 
@@ -9,7 +10,7 @@ namespace projekt
 
     public partial class Form1 : Form
     {
-        public static string[] Category = new string[]{"Konst","Komedi","Utbildning","Spel",
+        public static List<string> Category = new List<string>{"Konst","Komedi","Utbildning","Spel",
         "Hälsa","Musik","Politik","Samhälle","Sport","Teknologi","Skräck"};
 
         public Data ss;
@@ -64,7 +65,7 @@ namespace projekt
 
                 }
 
-              
+
             }
         }
 
@@ -74,22 +75,22 @@ namespace projekt
         {
             var Validering = validator;
             var Url = tbUrl.Text;
-            var s = tbUF.Text;
+            var s = tbUF.SelectedItem.ToString();
             string category = CBC.SelectedItem.ToString();
             int.TryParse(s, out int frekvens);
 
-
-            if (Validering.urlValidation(Url))
+            if (Validering.validateCategory(CBC) && Validering.validateInterval(tbUF))
             {
 
+                if (Validering.urlValidation(Url))
+                {
+                    var listOfFeeds = new AllaFeeds();
+                    listOfFeeds.allaFeeds(new RssFeed(Url, frekvens, category));
+                }
 
-                var listOfFeeds = new AllaFeeds();
-                listOfFeeds.allaFeeds(new RssFeed(Url, frekvens, category));
             }
-
         }
 
-        
 
         private void lvPordast_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -209,8 +210,27 @@ namespace projekt
             linkLabel.Text = rssData[index, 2];
         }
 
+
+        private void btSpara_Click(object sender, EventArgs e)
+        {
+            var sss = tbUrl.Text;
+            XmlDocument doc = new XmlDocument();
+            doc.Load("Feeds.xml");
+            System.Xml.XmlNodeList rssItems = doc.SelectNodes("ArrayOfRssFeed/RssFeed");
+
+            foreach (XmlNode node in rssItems)
+            {
+                System.Xml.XmlNode rssNodeTitle = node.SelectSingleNode("Category");
+                if (rssNodeTitle.InnerText == sss)
+                {
+                    XmlNode parent = node.ParentNode;
+                }
+            }
+            doc.Save("Feeds.xml");
+        }
     }
 }
+
 
 
 

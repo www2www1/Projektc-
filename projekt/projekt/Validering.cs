@@ -40,6 +40,30 @@ namespace projekt
 
 
         }
+        public static bool validateCategory(ComboBox category)
+        {
+            if (category.Text == "")
+            {
+                MessageBox.Show("Url, Update-frequenzy and cathegory needs to be filled");
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+        public static bool validateInterval(ComboBox interval)
+        {
+            if (interval.Text == "")
+            {
+                MessageBox.Show("Url, Update-frequenzy and cathegory needs to be filled");
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
     }
 }
 
