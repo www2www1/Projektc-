@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ArrayOfRssFeed xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <RssFeed>
-    <Url>jkadskhasjkd</Url>
-    <Updating>22</Updating>
-    <Category>Musik</Category>
-  </RssFeed>
-  <RssFeed>
-    <Url>nm,nx cmnakledioqw</Url>
+    <Url>asdasd</Url>
     <Updating>22</Updating>
     <Category>Utbildning</Category>
+  </RssFeed>
+  <RssFeed>
+    <Url>http://alexosigge.libsyn.com/rss</Url>
+    <Updating>22</Updating>
+    <Category>Musik</Category>
   </RssFeed>
 </ArrayOfRssFeed>

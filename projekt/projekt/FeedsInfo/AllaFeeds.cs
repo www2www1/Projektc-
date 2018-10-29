@@ -4,11 +4,14 @@ using System.Xml.Serialization;
 
 namespace projekt.classes
 {
-    class AllaFeeds
-    {
-        List<RssFeed> ListOfFeeds = new List<RssFeed>();
+    public class AllaFeeds:RssFeed
+    { List<RssFeed> ListOfFeeds = new List<RssFeed>();
 
-        public void ALlaFeeds(RssFeed feed)
+        
+       
+public AllaFeeds() { }
+
+        public void allaFeeds(RssFeed feed)
         {
             if (File.Exists(@"Feeds.xml"))
 
@@ -24,14 +27,14 @@ namespace projekt.classes
             }
         }
 
-
-        public void DeleteFeed(RssFeed Feed)
+    
+        public void DeleteFeed(string url)
         {
             foreach (RssFeed dd in ListOfFeeds)
             {
-                if (dd.Url == Feed.Url)
+                if (dd.Url == url)
                 {
-                    ListOfFeeds.Remove(Feed);
+                    ListOfFeeds.Remove(dd);
                     SaveToXmlFile();
 
                 }

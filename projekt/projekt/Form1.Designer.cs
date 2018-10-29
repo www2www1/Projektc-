@@ -46,11 +46,10 @@
             this.chFrekvens = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.chKategori1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.label1 = new System.Windows.Forms.Label();
-            this.lvEpisode = new System.Windows.Forms.ListView();
-            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.CBC = new System.Windows.Forms.ComboBox();
             this.tbUF = new System.Windows.Forms.TextBox();
+            this.lbEpisode = new System.Windows.Forms.ListBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // linkLabel
@@ -129,6 +128,7 @@
             this.btUrlTaBort.TabIndex = 28;
             this.btUrlTaBort.Text = "Ta bort";
             this.btUrlTaBort.UseVisualStyleBackColor = true;
+            this.btUrlTaBort.Click += new System.EventHandler(this.btUrlTaBort_Click);
             // 
             // btUrlSpara
             // 
@@ -216,31 +216,6 @@
             this.label1.TabIndex = 40;
             this.label1.Text = "URL :";
             // 
-            // lvEpisode
-            // 
-            this.lvEpisode.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader1,
-            this.columnHeader2});
-            this.lvEpisode.Enabled = false;
-            this.lvEpisode.HoverSelection = true;
-            this.lvEpisode.Location = new System.Drawing.Point(16, 300);
-            this.lvEpisode.Name = "lvEpisode";
-            this.lvEpisode.Size = new System.Drawing.Size(526, 97);
-            this.lvEpisode.TabIndex = 43;
-            this.lvEpisode.UseCompatibleStateImageBehavior = false;
-            this.lvEpisode.View = System.Windows.Forms.View.Details;
-            this.lvEpisode.SelectedIndexChanged += new System.EventHandler(this.lvEpisode_SelectedIndexChanged);
-            // 
-            // columnHeader1
-            // 
-            this.columnHeader1.Text = "Name";
-            this.columnHeader1.Width = 128;
-            // 
-            // columnHeader2
-            // 
-            this.columnHeader2.Text = "Description";
-            this.columnHeader2.Width = 147;
-            // 
             // CBC
             // 
             this.CBC.FormattingEnabled = true;
@@ -256,13 +231,33 @@
             this.tbUF.Size = new System.Drawing.Size(149, 22);
             this.tbUF.TabIndex = 41;
             // 
+            // lbEpisode
+            // 
+            this.lbEpisode.FormattingEnabled = true;
+            this.lbEpisode.ItemHeight = 16;
+            this.lbEpisode.Location = new System.Drawing.Point(16, 301);
+            this.lbEpisode.Name = "lbEpisode";
+            this.lbEpisode.Size = new System.Drawing.Size(362, 116);
+            this.lbEpisode.TabIndex = 46;
+            this.lbEpisode.SelectedIndexChanged += new System.EventHandler(this.lbEpisode_SelectedIndexChanged);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(406, 301);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(46, 17);
+            this.label4.TabIndex = 47;
+            this.label4.Text = "label4";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(858, 450);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.lbEpisode);
             this.Controls.Add(this.CBC);
-            this.Controls.Add(this.lvEpisode);
             this.Controls.Add(this.tbUF);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.linkLabel);
@@ -306,11 +301,10 @@
         private System.Windows.Forms.ColumnHeader chFrekvens;
         private System.Windows.Forms.ColumnHeader chKategori1;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ListView lvEpisode;
-        private System.Windows.Forms.ColumnHeader columnHeader1;
-        private System.Windows.Forms.ColumnHeader columnHeader2;
         private System.Windows.Forms.ComboBox CBC;
         private System.Windows.Forms.TextBox tbUF;
+        private System.Windows.Forms.ListBox lbEpisode;
+        private System.Windows.Forms.Label label4;
     }
 }
 

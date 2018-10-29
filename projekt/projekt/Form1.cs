@@ -1,7 +1,7 @@
 ﻿using projekt.classes;
 using System;
-using System.Collections.Generic;
 using System.Windows.Forms;
+using System.Xml;
 
 namespace projekt
 {
@@ -13,17 +13,17 @@ namespace projekt
         "Hälsa","Musik","Politik","Samhälle","Sport","Teknologi","Skräck"};
 
         public Data ss;
+        String[,] rssData = null;
 
-      
 
         public Form1()
         {
             InitializeComponent();
             // Gör så att hela raden markeras när man väljer den:
-            lvEpisode.FullRowSelect = true;
+
             lvPordast.FullRowSelect = true;
 
-          
+
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -45,37 +45,27 @@ namespace projekt
 
 
         private void button1_Click(object sender, EventArgs e)
-        {  var datan = new Data();
-          
-           
+        {
+            var datan = new Data();
+
+
 
             var Url = tbUrl.Text;
-          listviwed (datan.Sercher(Url));
-            
 
-        }
-        public void listviwed(string[,] getRssData)
-        {
-            lvEpisode.Items.Clear();
-
-            for (int i = 0; i < getRssData.GetLength(0); i++)
+            lbEpisode.Items.Clear();
+            rssData = getRssData(tbUrl.Text);
+            for (int i = 0; i < rssData.GetLength(0); i++)
             {
 
-                if (getRssData[i, 0] != null)
+                if (rssData[i, 0] != null)
                 {
-                    var listItem = new ListViewItem(
-                        new[] {
-                            getRssData[i, 0],getRssData[i,1]
-                        }
-                        );
-                    lvEpisode.Items.Add(listItem);
+                    lbEpisode.Items.Add(rssData[i, 0]);
 
 
                 }
 
-
+                //lvEpisode. = 0;
             }
-
         }
 
 
@@ -89,22 +79,128 @@ namespace projekt
 
             string category = CBC.SelectedItem.ToString();
             var listOfFeeds = new AllaFeeds();
-            listOfFeeds.ALlaFeeds(new RssFeed(Url, frekvens, category));
+            listOfFeeds.allaFeeds(new RssFeed(Url, frekvens, category));
 
         }
 
         private void lvPordast_SelectedIndexChanged(object sender, EventArgs e)
         {
-          
+
         }
 
-        private void lvEpisode_SelectedIndexChanged(object sender, EventArgs e)
+
+
+        public void listviwed(string[,] getRssData)
         {
+            lbEpisode.Items.Clear();
+
+            for (int i = 0; i < getRssData.GetLength(0); i++)
+            {
+
+                if (getRssData[i, 0] != null)
+                {
+                    var listItem = new ListViewItem(
+                        new[] {
+                            getRssData[i, 0]
+                        }
+                        );
+                    lbEpisode.Items.Add(listItem);
+
+
+                }
+
+
+            }
 
         }
 
+        private void btUrlTaBort_Click(object sender, EventArgs e)
+        {
+            var sss = tbUrl.Text;
+            XmlDocument doc = new XmlDocument();
+            doc.Load("Feeds.xml");
+            System.Xml.XmlNodeList rssItems = doc.SelectNodes("ArrayOfRssFeed/RssFeed");
 
- 
+            foreach (XmlNode node in rssItems)
+            {
+                System.Xml.XmlNode rssNodeTitle = node.SelectSingleNode("Url");
+                if (rssNodeTitle.InnerText == sss)
+                {
+                    XmlNode parent = node.ParentNode;
+                    parent.RemoveChild(node);
+                }
+
+            }
+
+
+            doc.Save("Feeds.xml");
+        }
+
+        private String[,] getRssData(String channel)
+        {
+            System.Net.WebRequest myRequest = System.Net.WebRequest.Create(channel);
+            System.Net.WebResponse myResponse = myRequest.GetResponse();
+
+            System.IO.Stream rssStream = myResponse.GetResponseStream();
+            System.Xml.XmlDocument rssDoc = new System.Xml.XmlDocument();
+
+            rssDoc.Load(rssStream);
+            System.Xml.XmlNodeList rssItems = rssDoc.SelectNodes("rss/channel/item");
+
+
+
+            String[,] tempRssData = new String[rssItems.Count, 3];
+            for (int i = 0; i < rssItems.Count; i++)
+            {
+
+
+                System.Xml.XmlNode rssNode;
+                rssNode = rssItems.Item(i).SelectSingleNode("title");
+
+                if (rssNode != null)
+                {
+
+                    tempRssData[i, 0] = rssNode.InnerText;
+
+                }
+                else
+                {
+                    tempRssData[i, 0] = "";
+
+                }
+
+                rssNode = rssItems.Item(i).SelectSingleNode("description");
+                if (rssNode != null)
+                {
+                    tempRssData[i, 1] = rssNode.InnerText;
+
+                }
+                else
+                {
+                    tempRssData[i, 1] = "";
+                }
+
+                rssNode = rssItems.Item(i).SelectSingleNode("link");
+                if (rssNode != null)
+                {
+                    tempRssData[i, 2] = rssNode.InnerText;
+                }
+                else
+                {
+                    tempRssData[i, 2] = "";
+                }
+
+            }
+            return tempRssData;
+        }
+
+        private void lbEpisode_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int index = lbEpisode.SelectedIndex;
+            label4.Text = rssData[index, 1];
+            linkLabel.Text = rssData[index, 2];
+        }
+
     }
 }
 
