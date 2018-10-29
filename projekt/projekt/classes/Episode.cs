@@ -1,6 +1,8 @@
-﻿namespace projekt.classes
+﻿using System.Windows.Forms;
+
+namespace projekt.classes
 {
-    class Episode
+   public  class Episode
     {
         public string Name { get; set; }
         public string Description { get; set; }
@@ -10,6 +12,17 @@
             this.Name = Name;
             this.Description = Description;
 
+        }
+        public Episode() { }
+
+        public  ListViewItem TolistViewItem()
+        {
+            var listView = new ListViewItem(new[] {
+                Name,
+                Description
+                
+            });
+            return listView;
         }
     }
 }

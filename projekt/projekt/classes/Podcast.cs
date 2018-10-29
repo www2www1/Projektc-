@@ -1,10 +1,12 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
+using System.Windows.Forms;
 
 namespace projekt.classes
 {
 
 
-    class Podcast
+    public class Podcast
 
     {
         public string Url { get; set; }
@@ -12,16 +14,39 @@ namespace projekt.classes
         public int TimeInterval { get; set; }
         public string NameOfPodCast { get; set; }
         public List<Episode> ListOFEpisode = new List<Episode>();
-        public int AllaEpisode { get; set; }
+   
 
-        public Podcast(string Url, string CategoryOfPodcast, int TimeInterval, List<Episode> ListOFEpisode, int AllaEpisode)
+        public int AllaEpisode { get; set; }
+        
+
+
+        public Podcast(string Url, string CategoryOfPodcast, int TimeInterval, List<Episode> ListOFEpisode)
         {
             this.Url = Url;
             this.CategoryOfPodcast = CategoryOfPodcast;
             this.TimeInterval = TimeInterval;
             this.ListOFEpisode = ListOFEpisode;
-            this.AllaEpisode = AllaEpisode;
+            AllaEpisode = ListOFEpisode.Count();
         }
+
+        public Podcast(string url) { }
+
+        public Podcast()
+        {
+        }
+
+        public ListViewItem TolistViewItem()
+        {
+            var listView = new ListViewItem(new[] {
+                AllaEpisode.ToString(),
+                NameOfPodCast,
+                TimeInterval.ToString(),
+                CategoryOfPodcast
+
+            });
+            return listView;
+        }
+
     }
 }
 

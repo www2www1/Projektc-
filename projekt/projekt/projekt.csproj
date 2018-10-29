@@ -48,7 +48,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="classes\AllPodcasts.cs" />
+    <Compile Include="FeedsInfo\AllaFeeds.cs" />
+    <Compile Include="FeedsInfo\RssFeed.cs" />
     <Compile Include="classes\Episode.cs" />
     <Compile Include="classes\Podcast.cs" />
     <Compile Include="classes\Data.cs" />
@@ -86,5 +87,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

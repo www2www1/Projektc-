@@ -1,10 +1,12 @@
 ﻿using projekt.classes;
 using System;
+using System.IO;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 namespace projekt
 {
     static class Program
-    {       public static Data data;
+    {
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
@@ -13,11 +15,10 @@ namespace projekt
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-          
+
             Application.Run(new Form1());
-           
 
+        }
 
-    }
     }
 }
