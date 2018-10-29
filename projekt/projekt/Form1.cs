@@ -14,7 +14,7 @@ namespace projekt
 
         public Data ss;
         String[,] rssData = null;
-
+        Validering validator = new Validering();
 
         public Form1()
         {
@@ -64,7 +64,7 @@ namespace projekt
 
                 }
 
-                //lvEpisode. = 0;
+              
             }
         }
 
@@ -72,16 +72,24 @@ namespace projekt
         //spara feedden 
         private void btUrlSpara_Click(object sender, EventArgs e)
         {
+            var Validering = validator;
             var Url = tbUrl.Text;
             var s = tbUF.Text;
-
+            string category = CBC.SelectedItem.ToString();
             int.TryParse(s, out int frekvens);
 
-            string category = CBC.SelectedItem.ToString();
-            var listOfFeeds = new AllaFeeds();
-            listOfFeeds.allaFeeds(new RssFeed(Url, frekvens, category));
+
+            if (Validering.urlValidation(Url))
+            {
+
+
+                var listOfFeeds = new AllaFeeds();
+                listOfFeeds.allaFeeds(new RssFeed(Url, frekvens, category));
+            }
 
         }
+
+        
 
         private void lvPordast_SelectedIndexChanged(object sender, EventArgs e)
         {

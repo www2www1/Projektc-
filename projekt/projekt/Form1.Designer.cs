@@ -235,18 +235,19 @@
             // 
             this.lbEpisode.FormattingEnabled = true;
             this.lbEpisode.ItemHeight = 16;
-            this.lbEpisode.Location = new System.Drawing.Point(16, 301);
+            this.lbEpisode.Location = new System.Drawing.Point(16, 285);
             this.lbEpisode.Name = "lbEpisode";
-            this.lbEpisode.Size = new System.Drawing.Size(362, 116);
+            this.lbEpisode.Size = new System.Drawing.Size(362, 132);
             this.lbEpisode.TabIndex = 46;
             this.lbEpisode.SelectedIndexChanged += new System.EventHandler(this.lbEpisode_SelectedIndexChanged);
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(406, 301);
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(407, 285);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(46, 17);
+            this.label4.Size = new System.Drawing.Size(41, 15);
             this.label4.TabIndex = 47;
             this.label4.Text = "label4";
             // 

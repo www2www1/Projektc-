@@ -1,14 +1,47 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace projekt
 {
-    class Validering
+    public class Validering
     {
+        public static bool textFieldNotEmpty(string input)
+        {
+            if (input == "")
+            {
+
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+        public static bool urlValidation(string url)
+        {
+            try
+            {
+                //Here we are trying to download the file, if it doesn't work, the url is not a valid url.
+                var xmlFile = "";
+                using (var client = new System.Net.WebClient())
+                {
+                    client.Encoding = Encoding.UTF8;
+                    xmlFile = client.DownloadString(url);
+                    return true;
+                }
+
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Please enter a valid url.");
+                return false;
+            }
+
+
+        }
     }
-    
-   
 }
+
+
+
