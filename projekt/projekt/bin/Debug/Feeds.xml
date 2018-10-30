@@ -1,13 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <ArrayOfRssFeed xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <RssFeed>
-    <Url>http://alexosigge.libsyn.com/rss</Url>
-    <Updating>0</Updating>
-    <Category>Musik</Category>
-  </RssFeed>
-  <RssFeed>
-    <Url>https://rss.acast.com/sparpodcast</Url>
-    <Updating>0</Updating>
-    <Category>Hälsa</Category>
-  </RssFeed>
 </ArrayOfRssFeed>

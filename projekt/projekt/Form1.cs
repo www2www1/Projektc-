@@ -13,6 +13,7 @@ namespace projekt
         public static List<string> Category = new List<string>{"Konst","Komedi","Utbildning","Spel",
         "Hälsa","Musik","Politik","Samhälle","Sport","Teknologi","Skräck"};
 
+        public Dictionary<string, int> source = new Dictionary<string, int>();
         public Data ss;
         public String[,] rssData = null;
         public Validering validator = new Validering();
@@ -23,10 +24,10 @@ namespace projekt
         {
             InitializeComponent();
             // Gör så att hela raden markeras när man väljer den:
-
+            source.Add("Hourly", 3600000);
+            source.Add("Daily", 3600000 * 24);
+            source.Add("Weekly", 3600000 * 96);
             lvPodcast.FullRowSelect = true;
-
-
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -64,7 +65,7 @@ namespace projekt
 
             }
             CBKatigorier();
-            UpdateInterval();
+            UpdateInterval(tbUF);
         }
 
 
@@ -166,7 +167,7 @@ namespace projekt
 
         private void btUrlTaBort_Click(object sender, EventArgs e)
         {
-            var sss = tbUrl.Text;
+            string sss = lvPodcast.SelectedItems[0].SubItems[4].Text;
             XmlDocument doc = new XmlDocument();
             doc.Load("Feeds.xml");
             System.Xml.XmlNodeList rssItems = doc.SelectNodes("ArrayOfRssFeed/RssFeed");
@@ -184,6 +185,7 @@ namespace projekt
 
 
             doc.Save("Feeds.xml");
+
         }
 
         private String[,] getRssData(String channel)
@@ -254,7 +256,7 @@ namespace projekt
 
         private void btSpara_Click(object sender, EventArgs e)
         {
-            Form1_Load(sender, e);
+
             var sss = tbUrl.Text;
             XmlDocument doc = new XmlDocument();
             doc.Load("Feeds.xml");
@@ -269,6 +271,7 @@ namespace projekt
                 }
             }
             doc.Save("Feeds.xml");
+
         }
 
         private void tbUF_SelectedIndexChanged(object sender, EventArgs e)
@@ -278,15 +281,13 @@ namespace projekt
 
         }
 
-        public void UpdateInterval()
+        public void UpdateInterval(ComboBox boxen)
         {
 
-
-            tbUF.Items.Add("Hourly");
-            tbUF.Items.Add("Daily");
-            tbUF.Items.Add("Monthly");
-            tbUF.Items.Add("Never");
-
+            foreach (var item in source)
+            {
+                boxen.Items.Add(item.Key);
+            }
         }
 
         private void label5_Click(object sender, EventArgs e)
@@ -301,6 +302,18 @@ namespace projekt
 
         private void btNy_Click(object sender, EventArgs e)
         {
+            if (comboBox3.Items.Contains(textBox1.Text))
+            {
+                MessageBox.Show("Vänligen ange en kategori som inte finns");
+            }
+            else
+            {
+                MessageBox.Show("Kategorin har lagts till");
+                CBC.Items.Add(textBox1.Text);
+                comboBox3.Items.Add(textBox1.Text);
+
+            }
+            //UpdateInterval(tbUF);
 
         }
 
@@ -316,8 +329,16 @@ namespace projekt
                 listviwed(rssData);
             }
         }
+
+        private void btTaBort_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("The following category has been removed : " + comboBox3.Text);
+            CBC.Items.Remove(comboBox3.Text);
+            comboBox3.Items.Remove(comboBox3.Text);
+        }
     }
-}
+    }
+
 
 
 

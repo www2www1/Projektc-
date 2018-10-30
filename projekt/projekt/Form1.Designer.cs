@@ -72,6 +72,7 @@
             this.btTaBort.TabIndex = 35;
             this.btTaBort.Text = "Ta bort";
             this.btTaBort.UseVisualStyleBackColor = true;
+            this.btTaBort.Click += new System.EventHandler(this.btTaBort_Click);
             // 
             // btSpara
             // 
@@ -254,7 +255,7 @@
             // richTextBox1
             // 
             this.richTextBox1.Location = new System.Drawing.Point(459, 305);
-            this.richTextBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.richTextBox1.Margin = new System.Windows.Forms.Padding(4);
             this.richTextBox1.Name = "richTextBox1";
             this.richTextBox1.ReadOnly = true;
             this.richTextBox1.Size = new System.Drawing.Size(371, 132);
