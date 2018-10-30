@@ -52,18 +52,22 @@ namespace projekt
                 return true;
             }
         }
-        public static bool validateInterval(ComboBox interval)
-        {
-            if (interval.Text == "")
-            {
-                MessageBox.Show("Url, Update-frequenzy and cathegory needs to be filled");
-                return false;
-            }
-            else
-            {
-                return true;
-            }
-        }
+
+
+        // Ej nödvändig validering då vi använder oss av en combobox? 
+
+        //public static bool validateInterval(ComboBox interval)
+        //{
+        //    if (interval.Text == "")
+        //    {
+        //        MessageBox.Show("Url, Update-frequenzy and cathegory needs to be filled");
+        //        return false;
+        //    }
+        //    else
+        //    {
+        //        return true;
+        //    }
+        //}
     }
 }
 
