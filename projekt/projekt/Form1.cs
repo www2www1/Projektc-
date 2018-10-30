@@ -81,7 +81,7 @@ namespace projekt
             string category = CBC.SelectedItem.ToString();
             int.TryParse(s, out int frekvens);
 
-            if (Validering.validateCategory(CBC) && Validering.validateInterval(tbUF))
+            if (Validering.validateCategory(CBC)) // && Validering.validateInterval(tbUF))
             {
 
                 if (Validering.urlValidation(Url))
@@ -208,7 +208,7 @@ namespace projekt
         private void lbEpisode_SelectedIndexChanged(object sender, EventArgs e)
         {
             int index = lbEpisode.SelectedIndex;
-            label4.Text = rssData[index, 1];
+            richTextBox1.Text = rssData[index, 1];
             linkLabel.Text = rssData[index, 2];
         }
 

@@ -48,23 +48,23 @@
             this.label1 = new System.Windows.Forms.Label();
             this.CBC = new System.Windows.Forms.ComboBox();
             this.lbEpisode = new System.Windows.Forms.ListBox();
-            this.label4 = new System.Windows.Forms.Label();
             this.tbUF = new System.Windows.Forms.ComboBox();
+            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // linkLabel
             // 
             this.linkLabel.AutoSize = true;
-            this.linkLabel.Location = new System.Drawing.Point(10, 343);
+            this.linkLabel.Location = new System.Drawing.Point(10, 365);
             this.linkLabel.Name = "linkLabel";
-            this.linkLabel.Size = new System.Drawing.Size(55, 13);
+            this.linkLabel.Size = new System.Drawing.Size(0, 13);
             this.linkLabel.TabIndex = 39;
-            this.linkLabel.TabStop = true;
-            this.linkLabel.Text = "linkLabel1";
             // 
             // btTaBort
             // 
-            this.btTaBort.Location = new System.Drawing.Point(567, 110);
+            this.btTaBort.Location = new System.Drawing.Point(590, 155);
             this.btTaBort.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btTaBort.Name = "btTaBort";
             this.btTaBort.Size = new System.Drawing.Size(56, 28);
@@ -74,7 +74,7 @@
             // 
             // btSpara
             // 
-            this.btSpara.Location = new System.Drawing.Point(492, 110);
+            this.btSpara.Location = new System.Drawing.Point(530, 155);
             this.btSpara.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btSpara.Name = "btSpara";
             this.btSpara.Size = new System.Drawing.Size(56, 28);
@@ -85,7 +85,7 @@
             // 
             // btNy
             // 
-            this.btNy.Location = new System.Drawing.Point(411, 110);
+            this.btNy.Location = new System.Drawing.Point(470, 155);
             this.btNy.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btNy.Name = "btNy";
             this.btNy.Size = new System.Drawing.Size(56, 28);
@@ -95,19 +95,19 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(411, 59);
+            this.textBox1.Location = new System.Drawing.Point(494, 84);
             this.textBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(213, 20);
+            this.textBox1.Size = new System.Drawing.Size(129, 20);
             this.textBox1.TabIndex = 32;
             // 
             // comboBox3
             // 
             this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(411, 9);
+            this.comboBox3.Location = new System.Drawing.Point(494, 39);
             this.comboBox3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(213, 21);
+            this.comboBox3.Size = new System.Drawing.Size(129, 21);
             this.comboBox3.TabIndex = 31;
             // 
             // label3
@@ -183,7 +183,7 @@
             this.lvPordast.Location = new System.Drawing.Point(6, 9);
             this.lvPordast.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.lvPordast.Name = "lvPordast";
-            this.lvPordast.Size = new System.Drawing.Size(402, 130);
+            this.lvPordast.Size = new System.Drawing.Size(452, 130);
             this.lvPordast.TabIndex = 22;
             this.lvPordast.UseCompatibleStateImageBehavior = false;
             this.lvPordast.View = System.Windows.Forms.View.Details;
@@ -232,23 +232,12 @@
             // lbEpisode
             // 
             this.lbEpisode.FormattingEnabled = true;
-            this.lbEpisode.Location = new System.Drawing.Point(12, 232);
+            this.lbEpisode.Location = new System.Drawing.Point(13, 248);
             this.lbEpisode.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.lbEpisode.Name = "lbEpisode";
-            this.lbEpisode.Size = new System.Drawing.Size(272, 108);
+            this.lbEpisode.Size = new System.Drawing.Size(268, 108);
             this.lbEpisode.TabIndex = 46;
             this.lbEpisode.SelectedIndexChanged += new System.EventHandler(this.lbEpisode_SelectedIndexChanged);
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(305, 232);
-            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(35, 13);
-            this.label4.TabIndex = 47;
-            this.label4.Text = "label4";
             // 
             // tbUF
             // 
@@ -261,13 +250,41 @@
             this.tbUF.TabIndex = 48;
             this.tbUF.SelectedIndexChanged += new System.EventHandler(this.tbUF_SelectedIndexChanged);
             // 
+            // richTextBox1
+            // 
+            this.richTextBox1.Location = new System.Drawing.Point(344, 248);
+            this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.Size = new System.Drawing.Size(279, 108);
+            this.richTextBox1.TabIndex = 49;
+            this.richTextBox1.Text = "";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(99, 227);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(81, 13);
+            this.label4.TabIndex = 50;
+            this.label4.Text = "List of Episodes";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(389, 227);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(101, 13);
+            this.label5.TabIndex = 51;
+            this.label5.Text = "Episode Description";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(657, 387);
-            this.Controls.Add(this.tbUF);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
+            this.Controls.Add(this.richTextBox1);
+            this.Controls.Add(this.tbUF);
             this.Controls.Add(this.lbEpisode);
             this.Controls.Add(this.CBC);
             this.Controls.Add(this.label1);
@@ -315,8 +332,10 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox CBC;
         private System.Windows.Forms.ListBox lbEpisode;
-        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ComboBox tbUF;
+        private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
     }
 }
 
