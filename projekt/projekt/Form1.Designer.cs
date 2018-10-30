@@ -92,6 +92,7 @@
             this.btNy.TabIndex = 33;
             this.btNy.Text = "Ny";
             this.btNy.UseVisualStyleBackColor = true;
+            this.btNy.Click += new System.EventHandler(this.btNy_Click);
             // 
             // textBox1
             // 
@@ -103,12 +104,14 @@
             // 
             // comboBox3
             // 
+            this.comboBox3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox3.FormattingEnabled = true;
             this.comboBox3.Location = new System.Drawing.Point(494, 39);
             this.comboBox3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.comboBox3.Name = "comboBox3";
             this.comboBox3.Size = new System.Drawing.Size(129, 21);
             this.comboBox3.TabIndex = 31;
+            this.comboBox3.SelectedIndexChanged += new System.EventHandler(this.comboBox3_SelectedIndexChanged);
             // 
             // label3
             // 
