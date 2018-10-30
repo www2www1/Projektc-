@@ -4,36 +4,78 @@ using System.Collections.Generic;
 using System.Windows.Forms;
 using System.Xml;
 
-namespace projekt {
+namespace projekt
+{
 
 
-    public partial class Form1 : Form {
+    public partial class Form1 : Form
+    {
         public static List<string> Category = new List<string>{"Konst","Komedi","Utbildning","Spel",
         "Hälsa","Musik","Politik","Samhälle","Sport","Teknologi","Skräck"};
 
         public Data ss;
-        String[,] rssData = null;
-        Validering validator = new Validering();
-
-        public Form1() {
+        public String[,] rssData = null;
+        public Validering validator = new Validering();
+        public AllaFeeds AllFeeds;
+        public RssFeed Rss;
+        public List<RssFeed> listofRss;
+        public Form1()
+        {
             InitializeComponent();
             // Gör så att hela raden markeras när man väljer den:
 
-            lvPordast.FullRowSelect = true;
+            lvPodcast.FullRowSelect = true;
 
 
         }
 
-        private void Form1_Load(object sender, EventArgs e) {
-            CBKatigorier();
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            var ListOfEpisodes = new List<Episode>();
+            var podcast = new Podcast();
+            var Allfeeds = new AllaFeeds();
 
+
+            XmlDocument doc = new XmlDocument();
+            doc.Load("Feeds.xml");
+            System.Xml.XmlNodeList rssItems = doc.SelectNodes("ArrayOfRssFeed/RssFeed");
+            foreach (XmlNode RssFeed in rssItems)
+            {
+                var UrlRss = RssFeed.SelectSingleNode("Url").InnerText;
+                var UpdatingRss = RssFeed.SelectSingleNode("Updating").InnerText;
+                var CateRss = RssFeed.SelectSingleNode("Category").InnerText;
+
+
+                System.Net.WebRequest myRequest = System.Net.WebRequest.Create(UrlRss);
+                System.Net.WebResponse myResponse = myRequest.GetResponse();
+
+                System.IO.Stream rssStream = myResponse.GetResponseStream();
+                System.Xml.XmlDocument rssDoc = new System.Xml.XmlDocument();
+
+                rssDoc.Load(rssStream);
+                System.Xml.XmlNode rssName = rssDoc.SelectSingleNode("rss/channel");
+                var podcastName = rssName.InnerText;
+                System.Xml.XmlNodeList xx = rssDoc.SelectNodes("rss/channel/item");
+                int antalEpisoder = xx.Count;
+
+                string[] RowPodCast = { antalEpisoder.ToString(), podcastName, UpdatingRss.ToString(), CateRss, UrlRss };
+                var listItem = new ListViewItem(RowPodCast);
+                lvPodcast.Items.Add(listItem);
+
+            }
+            CBKatigorier();
             UpdateInterval();
         }
 
 
+
+
+
         //en metod för att fylla combo boxen med olika alternativ ///
-        public void CBKatigorier() {
-            foreach (string cato in Category) {
+        public void CBKatigorier()
+        {
+            foreach (string cato in Category)
+            {
                 CBC.Items.Add(cato);
                 comboBox3.Items.Add(cato);
             }
@@ -41,7 +83,8 @@ namespace projekt {
         }
 
 
-        private void button1_Click(object sender, EventArgs e) {
+        private void button1_Click(object sender, EventArgs e)
+        {
             var datan = new Data();
 
 
@@ -50,9 +93,11 @@ namespace projekt {
 
             lbEpisode.Items.Clear();
             rssData = getRssData(tbUrl.Text);
-            for (int i = 0; i < rssData.GetLength(0); i++) {
+            for (int i = 0; i < rssData.GetLength(0); i++)
+            {
 
-                if (rssData[i, 0] != null) {
+                if (rssData[i, 0] != null)
+                {
                     lbEpisode.Items.Add(rssData[i, 0]);
 
 
@@ -64,10 +109,11 @@ namespace projekt {
 
 
         //spara feedden 
-        private void btUrlSpara_Click(object sender, EventArgs e) {
+        private void btUrlSpara_Click(object sender, EventArgs e)
+        {
             var Validering = validator;
             var Url = tbUrl.Text;
-   
+
 
             if (Validering.validateCategory(CBC) && Validering.intervalBoxNotEmpty(tbUF))
             {
@@ -77,7 +123,8 @@ namespace projekt {
                 var s = tbUF.SelectedItem.ToString();
                 int.TryParse(s, out int frekvens);
 
-                if (Validering.urlValidation(Url)) {
+                if (Validering.urlValidation(Url))
+                {
                     var listOfFeeds = new AllaFeeds();
                     listOfFeeds.allaFeeds(new RssFeed(Url, frekvens, category));
                 }
@@ -86,18 +133,22 @@ namespace projekt {
         }
 
 
-        private void lvPordast_SelectedIndexChanged(object sender, EventArgs e) {
+        private void lvPordast_SelectedIndexChanged(object sender, EventArgs e)
+        {
 
         }
 
 
 
-        public void listviwed(string[,] getRssData) {
+        public void listviwed(string[,] getRssData)
+        {
             lbEpisode.Items.Clear();
 
-            for (int i = 0; i < getRssData.GetLength(0); i++) {
+            for (int i = 0; i < getRssData.GetLength(0); i++)
+            {
 
-                if (getRssData[i, 0] != null) {
+                if (getRssData[i, 0] != null)
+                {
                     var listItem = new ListViewItem(
                         new[] {
                             getRssData[i, 0]
@@ -113,15 +164,18 @@ namespace projekt {
 
         }
 
-        private void btUrlTaBort_Click(object sender, EventArgs e) {
+        private void btUrlTaBort_Click(object sender, EventArgs e)
+        {
             var sss = tbUrl.Text;
             XmlDocument doc = new XmlDocument();
             doc.Load("Feeds.xml");
             System.Xml.XmlNodeList rssItems = doc.SelectNodes("ArrayOfRssFeed/RssFeed");
 
-            foreach (XmlNode node in rssItems) {
+            foreach (XmlNode node in rssItems)
+            {
                 System.Xml.XmlNode rssNodeTitle = node.SelectSingleNode("Url");
-                if (rssNodeTitle.InnerText == sss) {
+                if (rssNodeTitle.InnerText == sss)
+                {
                     XmlNode parent = node.ParentNode;
                     parent.RemoveChild(node);
                 }
@@ -132,7 +186,8 @@ namespace projekt {
             doc.Save("Feeds.xml");
         }
 
-        private String[,] getRssData(String channel) {
+        private String[,] getRssData(String channel)
+        {
             System.Net.WebRequest myRequest = System.Net.WebRequest.Create(channel);
             System.Net.WebResponse myResponse = myRequest.GetResponse();
 
@@ -145,33 +200,43 @@ namespace projekt {
 
 
             String[,] tempRssData = new String[rssItems.Count, 3];
-            for (int i = 0; i < rssItems.Count; i++) {
+            for (int i = 0; i < rssItems.Count; i++)
+            {
 
 
                 System.Xml.XmlNode rssNode;
                 rssNode = rssItems.Item(i).SelectSingleNode("title");
 
-                if (rssNode != null) {
+                if (rssNode != null)
+                {
 
                     tempRssData[i, 0] = rssNode.InnerText;
 
-                } else {
+                }
+                else
+                {
                     tempRssData[i, 0] = "";
 
                 }
 
                 rssNode = rssItems.Item(i).SelectSingleNode("description");
-                if (rssNode != null) {
+                if (rssNode != null)
+                {
                     tempRssData[i, 1] = rssNode.InnerText;
 
-                } else {
+                }
+                else
+                {
                     tempRssData[i, 1] = "";
                 }
 
                 rssNode = rssItems.Item(i).SelectSingleNode("link");
-                if (rssNode != null) {
+                if (rssNode != null)
+                {
                     tempRssData[i, 2] = rssNode.InnerText;
-                } else {
+                }
+                else
+                {
                     tempRssData[i, 2] = "";
                 }
 
@@ -179,35 +244,42 @@ namespace projekt {
             return tempRssData;
         }
 
-        private void lbEpisode_SelectedIndexChanged(object sender, EventArgs e) {
+        private void lbEpisode_SelectedIndexChanged(object sender, EventArgs e)
+        {
             int index = lbEpisode.SelectedIndex;
             richTextBox1.Text = rssData[index, 1];
             linkLabel.Text = rssData[index, 2];
         }
 
 
-        private void btSpara_Click(object sender, EventArgs e) {
+        private void btSpara_Click(object sender, EventArgs e)
+        {
+            Form1_Load(sender, e);
             var sss = tbUrl.Text;
             XmlDocument doc = new XmlDocument();
             doc.Load("Feeds.xml");
             System.Xml.XmlNodeList rssItems = doc.SelectNodes("ArrayOfRssFeed/RssFeed");
 
-            foreach (XmlNode node in rssItems) {
+            foreach (XmlNode node in rssItems)
+            {
                 System.Xml.XmlNode rssNodeTitle = node.SelectSingleNode("Category");
-                if (rssNodeTitle.InnerText == sss) {
+                if (rssNodeTitle.InnerText == sss)
+                {
                     XmlNode parent = node.ParentNode;
                 }
             }
             doc.Save("Feeds.xml");
         }
 
-        private void tbUF_SelectedIndexChanged(object sender, EventArgs e) {
+        private void tbUF_SelectedIndexChanged(object sender, EventArgs e)
+        {
 
 
 
         }
 
-        public void UpdateInterval() {
+        public void UpdateInterval()
+        {
 
 
             tbUF.Items.Add("Hourly");
@@ -217,16 +289,32 @@ namespace projekt {
 
         }
 
-        private void label5_Click(object sender, EventArgs e) {
+        private void label5_Click(object sender, EventArgs e)
+        {
 
         }
 
-        private void comboBox3_SelectedIndexChanged(object sender, EventArgs e) {
+        private void comboBox3_SelectedIndexChanged(object sender, EventArgs e)
+        {
 
         }
 
-        private void btNy_Click(object sender, EventArgs e) {
+        private void btNy_Click(object sender, EventArgs e)
+        {
 
+        }
+
+        private void lvPodcast_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
+        {
+            lbEpisode.Items.Clear();
+            if (lvPodcast.SelectedItems.Count > 0)
+            {
+                string url = lvPodcast.SelectedItems[0].SubItems[4].Text;
+
+                rssData = getRssData(url);
+
+                listviwed(rssData);
+            }
         }
     }
 }

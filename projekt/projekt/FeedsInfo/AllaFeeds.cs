@@ -5,11 +5,16 @@ using System.Xml.Serialization;
 namespace projekt.classes
 {
     public class AllaFeeds:RssFeed
-    { List<RssFeed> ListOfFeeds = new List<RssFeed>();
+    {
+        List<RssFeed> ListOfFeeds = new List<RssFeed>();
 
         
        
-public AllaFeeds() { }
+public AllaFeeds() {
+
+            ReadFreomXmlFile();
+            getFeeds();
+        }
 
         public void allaFeeds(RssFeed feed)
         {
@@ -50,13 +55,17 @@ public AllaFeeds() { }
         }
 
 
-        public void ReadFreomXmlFile()
+        public  List<RssFeed> ReadFreomXmlFile()
         {
             StreamReader redaer = new StreamReader(@"Feeds.xml");
             XmlSerializer xs = new XmlSerializer(typeof(List<RssFeed>));
             ListOfFeeds = (List<RssFeed>)xs.Deserialize(redaer);
             redaer.Close();
+            return ListOfFeeds;
+        }
 
+        public List<RssFeed> getFeeds() {
+            return ListOfFeeds;
         }
     }
 
