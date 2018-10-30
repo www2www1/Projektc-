@@ -30,6 +30,8 @@ namespace projekt
         private void Form1_Load(object sender, EventArgs e)
         {
             CBKatigorier();
+
+            UpdateInterval();
         }
 
 
@@ -228,6 +230,23 @@ namespace projekt
             }
             doc.Save("Feeds.xml");
         }
+
+        private void tbUF_SelectedIndexChanged(object sender, EventArgs e) {
+
+
+
+        }
+
+        public void UpdateInterval() {
+
+
+            tbUF.Items.Add("Hourly");
+            tbUF.Items.Add("Daily");
+            tbUF.Items.Add("Monthly");
+            tbUF.Items.Add("Never");
+
+        }
+
     }
 }
 

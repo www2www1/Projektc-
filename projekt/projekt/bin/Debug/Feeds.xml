@@ -5,4 +5,14 @@
     <Updating>22</Updating>
     <Category>Utbildning</Category>
   </RssFeed>
+  <RssFeed>
+    <Url>http://feeds.soundcloud.com/users/soundcloud:users:333050246/sounds.rss</Url>
+    <Updating>5000</Updating>
+    <Category>Utbildning</Category>
+  </RssFeed>
+  <RssFeed>
+    <Url>http://feeds.soundcloud.com/users/soundcloud:users:333050246/sounds.rss</Url>
+    <Updating>5000</Updating>
+    <Category>Utbildning</Category>
+  </RssFeed>
 </ArrayOfRssFeed>
