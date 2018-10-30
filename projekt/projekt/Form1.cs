@@ -67,15 +67,15 @@ namespace projekt {
         private void btUrlSpara_Click(object sender, EventArgs e) {
             var Validering = validator;
             var Url = tbUrl.Text;
-            var s = tbUF.SelectedItem.ToString();
-            int.TryParse(s, out int frekvens);
+   
 
-            if (Validering.validateCategory(CBC)) // && Validering.validateInterval(tbUF))
+            if (Validering.validateCategory(CBC) && Validering.intervalBoxNotEmpty(tbUF))
             {
 
 
                 string category = CBC.SelectedItem.ToString();
-
+                var s = tbUF.SelectedItem.ToString();
+                int.TryParse(s, out int frekvens);
 
                 if (Validering.urlValidation(Url)) {
                     var listOfFeeds = new AllaFeeds();
