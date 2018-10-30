@@ -233,7 +233,7 @@
             this.lbEpisode.Location = new System.Drawing.Point(13, 248);
             this.lbEpisode.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.lbEpisode.Name = "lbEpisode";
-            this.lbEpisode.Size = new System.Drawing.Size(268, 108);
+            this.lbEpisode.Size = new System.Drawing.Size(279, 108);
             this.lbEpisode.TabIndex = 46;
             this.lbEpisode.SelectedIndexChanged += new System.EventHandler(this.lbEpisode_SelectedIndexChanged);
             // 
@@ -268,11 +268,12 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(389, 227);
+            this.label5.Location = new System.Drawing.Point(440, 227);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(101, 13);
             this.label5.TabIndex = 51;
             this.label5.Text = "Episode Description";
+            this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
             // Form1
             // 
