@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ArrayOfRssFeed xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <RssFeed>
-    <Url>https://rss.acast.com/sparpodcast</Url>
-    <Updating>345600000</Updating>
-    <Category>Hälsa</Category>
+    <Url>http://alexosigge.libsyn.com/rss</Url>
+    <Updating>3600000</Updating>
+    <Category>Utbildning</Category>
   </RssFeed>
 </ArrayOfRssFeed>

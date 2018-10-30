@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml;
 
@@ -36,43 +37,52 @@ namespace projekt
             var ListOfEpisodes = new List<Episode>();
             var podcast = new Podcast();
             var Allfeeds = new AllaFeeds();
-
-
-            XmlDocument doc = new XmlDocument();
-            doc.Load("Feeds.xml");
-            System.Xml.XmlNodeList rssItems = doc.SelectNodes("ArrayOfRssFeed/RssFeed");
-            foreach (XmlNode RssFeed in rssItems)
-            {
-                var UrlRss = RssFeed.SelectSingleNode("Url").InnerText;
-                int.TryParse(RssFeed.SelectSingleNode("Updating").InnerText, out int UpdatingRss);
-                var CateRss = RssFeed.SelectSingleNode("Category").InnerText;
-
-                
-
-                System.Net.WebRequest myRequest = System.Net.WebRequest.Create(UrlRss);
-                System.Net.WebResponse myResponse = myRequest.GetResponse();
-
-                System.IO.Stream rssStream = myResponse.GetResponseStream();
-                System.Xml.XmlDocument rssDoc = new System.Xml.XmlDocument();
-
-                rssDoc.Load(rssStream);
-                System.Xml.XmlNode rssName = rssDoc.SelectSingleNode("rss/channel");
-                var podcastName = rssName.InnerText;
-                System.Xml.XmlNodeList xx = rssDoc.SelectNodes("rss/channel/item");
-                int antalEpisoder = xx.Count;
-               
-                string frekvens = source.FirstOrDefault(x => x.Value == UpdatingRss).Key;
-                string[] RowPodCast = {antalEpisoder.ToString(), podcastName, frekvens, CateRss, UrlRss };
-                var listItem = new ListViewItem(RowPodCast);
-                lvPodcast.Items.Add(listItem);
-
-            }
+              string url = "";
+            loadPodCast(url);
+         
+          
             CBKatigorier();
             UpdateInterval(tbUF);
         }
 
 
+        public void loadPodCast(string url) {
 
+            if (url == "") { }
+            else { 
+            XmlDocument doc = new XmlDocument();
+            doc.Load("Feeds.xml");
+            
+            System.Xml.XmlNodeList rssItems = doc.SelectNodes("ArrayOfRssFeed/RssFeed");
+                foreach (XmlNode RssFeed in rssItems)
+                {
+                    var UrlRss = RssFeed.SelectSingleNode("Url").InnerText;
+                    int.TryParse(RssFeed.SelectSingleNode("Updating").InnerText, out int UpdatingRss);
+                    var CateRss = RssFeed.SelectSingleNode("Category").InnerText;
+
+
+
+                    System.Net.WebRequest myRequest = System.Net.WebRequest.Create(UrlRss);
+                    System.Net.WebResponse myResponse = myRequest.GetResponse();
+
+                    System.IO.Stream rssStream = myResponse.GetResponseStream();
+                    System.Xml.XmlDocument rssDoc = new System.Xml.XmlDocument();
+
+                    rssDoc.Load(rssStream);
+                    rssStream.Close();
+                    System.Xml.XmlNode rssName = rssDoc.SelectSingleNode("rss/channel");
+                    var podcastName = rssName.InnerText;
+                    System.Xml.XmlNodeList xx = rssDoc.SelectNodes("rss/channel/item");
+                    int antalEpisoder = xx.Count;
+
+                    string frekvens = source.FirstOrDefault(x => x.Value == UpdatingRss).Key;
+                    string[] RowPodCast = { antalEpisoder.ToString(), podcastName, frekvens, CateRss, UrlRss };
+                    var listItem = new ListViewItem(RowPodCast);
+
+                    lvPodcast.Items.Add(listItem);
+                }
+            }
+        }
 
 
         //en metod för att fylla combo boxen med olika alternativ ///
@@ -110,37 +120,45 @@ namespace projekt
         //spara feedden 
         private void btUrlSpara_Click(object sender, EventArgs e)
         {
-            var Validering = validator;
+           
+            lvPodcast.Items.Clear();
             var Url = tbUrl.Text;
+            loadPodCast(Url);
+           
+            var Validering = validator;
+           
             int frekvens = 0;
-
+           
             if (Validering.validateCategory(CBC) && Validering.intervalBoxNotEmpty(tbUF))
             {
                 string category = CBC.SelectedItem.ToString();
                 if (source.ContainsKey(tbUF.Text))
                 {
                     frekvens = source[tbUF.Text];
-             
 
-                if (Validering.urlValidation(Url))
-                {
-                    var listOfFeeds = new AllaFeeds();
-                    listOfFeeds.allaFeeds(new RssFeed(Url, frekvens, category));
+
+                    if (Validering.urlValidation(Url))
+                    {
+                        var listOfFeeds = new AllaFeeds();
+                        listOfFeeds.allaFeeds(new RssFeed(Url, frekvens, category));
+                    }
+
                 }
-
             }
+        
         }
-   }
         private void lvPordast_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }
         public void listviwed(string[,] getRssData)
-        {lbEpisode.Items.Clear();
+        {
+            lbEpisode.Items.Clear();
             for (int i = 0; i < getRssData.GetLength(0); i++)
             {
-                if (getRssData[i, 0] != null) { 
-                    lbEpisode.Items.Add(getRssData[i,0]);
+                if (getRssData[i, 0] != null)
+                {
+                    lbEpisode.Items.Add(getRssData[i, 0]);
                     linkLabel.Text = rssData[i, 2];
                 }
             }
@@ -148,7 +166,9 @@ namespace projekt
 
         private void btUrlTaBort_Click(object sender, EventArgs e)
         {
+            string url = "";
             string sss = lvPodcast.SelectedItems[0].SubItems[4].Text;
+
             XmlDocument doc = new XmlDocument();
             doc.Load("Feeds.xml");
             System.Xml.XmlNodeList rssItems = doc.SelectNodes("ArrayOfRssFeed/RssFeed");
@@ -163,6 +183,9 @@ namespace projekt
                 }
             }
             doc.Save("Feeds.xml");
+            lvPodcast.Items.Clear();
+            lbEpisode.Items.Clear();
+            loadPodCast(url);
         }
 
         private String[,] getRssData(String channel)
@@ -293,7 +316,7 @@ namespace projekt
                 string url = lvPodcast.SelectedItems[0].SubItems[4].Text;
                 rssData = getRssData(url);
                 listviwed(rssData);
-            
+
             }
         }
 
