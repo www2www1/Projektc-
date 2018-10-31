@@ -293,6 +293,7 @@ namespace projekt
 
         private void btNy_Click(object sender, EventArgs e)
         {
+            if(Validering.intervalBoxNotEmpty(textBox1))
             if (comboBox3.Items.Contains(textBox1.Text))
             {
                 MessageBox.Show("Vänligen ange en kategori som inte finns");

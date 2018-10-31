@@ -61,6 +61,14 @@ namespace projekt
                 return true;
             }
         }
+        public static bool intervalBoxNotEmpty(TextBox inter) {
+            if (inter.Text == "") {
+                MessageBox.Show("The new category-field can't be empty");
+                return false;
+            } else {
+                return true;
+            }
+        }
     }
 }
 
