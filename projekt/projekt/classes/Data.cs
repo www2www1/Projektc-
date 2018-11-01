@@ -12,8 +12,7 @@ namespace projekt
         Form1 ss = new Form1();
         public Data() { }
 
-    
-     
+
         
         //för att hämta xml rss o spara den i en xml lockalt///
         public string[,] Sercher(string url)

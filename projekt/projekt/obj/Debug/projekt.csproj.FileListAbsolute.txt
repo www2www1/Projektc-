@@ -48,3 +48,13 @@ C:\Users\salmo\OneDrive\Dokument\GitHub\Projektc-\projekt\projekt\obj\Debug\proj
 C:\Users\salmo\OneDrive\Dokument\GitHub\Projektc-\projekt\projekt\obj\Debug\projekt.csproj.CoreCompileInputs.cache
 C:\Users\salmo\OneDrive\Dokument\GitHub\Projektc-\projekt\projekt\obj\Debug\projekt.exe
 C:\Users\salmo\OneDrive\Dokument\GitHub\Projektc-\projekt\projekt\obj\Debug\projekt.pdb
+C:\Users\Dario\Documents\GitHub\Projektc-\projekt\projekt\Projektc-\projekt\projekt\bin\Debug\projekt.exe.config
+C:\Users\Dario\Documents\GitHub\Projektc-\projekt\projekt\Projektc-\projekt\projekt\bin\Debug\projekt.exe
+C:\Users\Dario\Documents\GitHub\Projektc-\projekt\projekt\Projektc-\projekt\projekt\bin\Debug\projekt.pdb
+C:\Users\Dario\Documents\GitHub\Projektc-\projekt\projekt\Projektc-\projekt\projekt\obj\Debug\projekt.csprojAssemblyReference.cache
+C:\Users\Dario\Documents\GitHub\Projektc-\projekt\projekt\Projektc-\projekt\projekt\obj\Debug\projekt.Form1.resources
+C:\Users\Dario\Documents\GitHub\Projektc-\projekt\projekt\Projektc-\projekt\projekt\obj\Debug\projekt.Properties.Resources.resources
+C:\Users\Dario\Documents\GitHub\Projektc-\projekt\projekt\Projektc-\projekt\projekt\obj\Debug\projekt.csproj.GenerateResource.cache
+C:\Users\Dario\Documents\GitHub\Projektc-\projekt\projekt\Projektc-\projekt\projekt\obj\Debug\projekt.csproj.CoreCompileInputs.cache
+C:\Users\Dario\Documents\GitHub\Projektc-\projekt\projekt\Projektc-\projekt\projekt\obj\Debug\projekt.exe
+C:\Users\Dario\Documents\GitHub\Projektc-\projekt\projekt\Projektc-\projekt\projekt\obj\Debug\projekt.pdb

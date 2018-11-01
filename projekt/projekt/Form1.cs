@@ -15,6 +15,10 @@ namespace projekt
         public static List<string> Category = new List<string>{"Konst","Komedi","Utbildning","Spel",
         "Hälsa","Musik","Politik","Samhälle","Sport","Teknologi","Skräck"};
 
+        
+
+
+
         public Dictionary<string, int> source = new Dictionary<string, int>();
         public Data ss;
         public String[,] rssData = null;
@@ -22,14 +26,17 @@ namespace projekt
         public AllaFeeds AllFeeds;
         public RssFeed Rss;
         public List<RssFeed> listofRss;
-        public Form1()
-        {
+        public Form1() {
             InitializeComponent();
             // Gör så att hela raden markeras när man väljer den:
             source.Add("Hourly", 3600000);
             source.Add("Daily", 3600000 * 24);
             source.Add("Weekly", 3600000 * 96);
             lvPodcast.FullRowSelect = true;
+
+            source = source.OrderByDescending(u => u.Value).ToDictionary(z => z.Key, y => y.Value);
+
+
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -43,7 +50,9 @@ namespace projekt
           
             CBKatigorier();
             UpdateInterval(tbUF);
+
         }
+
 
 
         public void loadPodCast(string url) {
@@ -88,11 +97,17 @@ namespace projekt
         //en metod för att fylla combo boxen med olika alternativ ///
         public void CBKatigorier()
         {
+
+          
+
             foreach (string cato in Category)
             {
                 CBC.Items.Add(cato);
                 comboBox3.Items.Add(cato);
+
+   
             }
+
 
         }
 
@@ -327,6 +342,10 @@ namespace projekt
             CBC.Items.Remove(comboBox3.Text);
             comboBox3.Items.Remove(comboBox3.Text);
         }
+
+
+      
+
     }
 }
 
